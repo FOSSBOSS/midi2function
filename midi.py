@@ -38,11 +38,11 @@ else:
 # Open a connection to the function generator
 func_gen = rm.open_resource(func_gen_resource)
 
-amp = 100.0
+amp = 10.0
 # Set up the function generator
 func_gen.write('*RST')  # Reset the function generator to default settings
 func_gen.write('FUNC SQU')  # Set waveform: options: SIN, RAMP, SQU,PULS, SAW 
-func_gen.write(f"VOLTage {amp}")
+func_gen.write(f"VOLT {amp}")
 func_gen.write('OUTP:LOAD INF')  # Set output load to infinite
 func_gen.write('OUTP ON')  
 
