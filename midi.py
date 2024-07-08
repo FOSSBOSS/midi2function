@@ -35,7 +35,9 @@ func_gen = rm.open_resource(func_gen_resource)
 amp = 10.0
 # Set up the function generator
 func_gen.write('*RST')  # Reset the function generator to default settings
+# FUNC TRI sets to RAMP, any undefined string will set to the initialization function, in this case SIN
 func_gen.write('FUNC SQU')  # Set waveform: options: SIN, RAMP, SQU,PUL, SAW ( SAW sets to SIN ) 
+
 func_gen.write(f"VOLT {amp}")
 func_gen.write('OUTP:LOAD INF')  # Set output load to infinite
 func_gen.write('OUTP ON')  
