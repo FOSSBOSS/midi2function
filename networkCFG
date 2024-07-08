@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import pyvisa
+import time
+"""
+Short example on how to send commands via IP.
+No conflicts with also having the USB plugged in concurrently.
+"""
+instrument_ip = '10.1.0.159' 
+
+# Connect to the function generator
+rm = pyvisa.ResourceManager('@py')
+func_gen = rm.open_resource(f'TCPIP::{instrument_ip}::INSTR')
+
+# Example: Set up the function generator
+func_gen.write('*RST') #100mVp-p, 1khz, sine
+func_gen.write('FUNC SIN')  
+func_gen.write('VOLT 2')  
+func_gen.write('OUTP:LOAD INF')  
+func_gen.write('OUTP ON') 
+
+# Example: Reading an identification string
+print("Instrument ID:", func_gen.query('*IDN?'))
+time.sleep(1.0)
+# Close the connection
+func_gen.write('OUTP OFF') # Silence!
+func_gen.write('SYSTEM:LOCAL') # Return to manual control
+func_gen.close() # Close connection
