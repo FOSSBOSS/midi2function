@@ -8,15 +8,9 @@ switching wave form, voltage, or output, will make the relays click.
 setting the frequency to 0 will make the Function generator beep.
 Its a setting, but my cpu battery is dead, and I dont know how to configure that
 via pyvisa or USBTMC
- This isn't automatic initalization, I dumped the list, and pasted in the 
+ This isn't automatic midi initalization, I dumped the list, and pasted in the 
  right midi_port after running once. tried to use the aseqdump listed midi port,
  but mido doesnt like it. 
- The same issue for the Resource Manager, 
- instrument = rm.list_resources()
- print(f"Connected instrument: {instrument}")
- 
- I could fix it but Im tired.
- Going to add a pitch bend, and wave modifyer, itll make the relay clicks but whatever.
  
  Other todo:
  Figure out how to do user defined wave forms, and figure something out for attack, decay.
